@@ -3,7 +3,8 @@ from rest_framework import generics
 from .models import Person, Address, PhoneNumber, Interest
 from .serializers import (
     PersonSerializer, AddressSerializer,
-    PhoneNumberSerializer, InterestSerializer
+    PhoneNumberSerializer, InterestSerializer,
+    PersonViewSerializer
 )
 
 class PersonListCreateView(generics.ListCreateAPIView):
@@ -37,3 +38,7 @@ class InterestListCreateView(generics.ListCreateAPIView):
 class InterestRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Interest.objects.all()
     serializer_class = InterestSerializer
+
+class PersonListView(generics.ListAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonViewSerializer

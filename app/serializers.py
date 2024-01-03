@@ -2,13 +2,7 @@
 from rest_framework import serializers
 from .models import Person, Address, PhoneNumber, Interest
 
-#   View only (get method only supported to view complete data from many to many)
-# class PersonSerializer(serializers.ModelSerializer):
-#     interests = InterestSerializer(many=True)
 
-#     class Meta:
-#         model = Person
-#         fields = '__all__'
 class PersonSerializer(serializers.ModelSerializer):
     interests = serializers.PrimaryKeyRelatedField(many=True, queryset=Interest.objects.all())
 
@@ -32,3 +26,9 @@ class InterestSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+#   View only (get method only supported to view complete data from many to many)
+class PersonViewSerializer(serializers.ModelSerializer):
+    interests = InterestSerializer(many=True)
+    class Meta:
+        model = Person
+        fields = '__all__'

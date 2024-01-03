@@ -4,11 +4,13 @@ from .views import (
     PersonListCreateView, PersonRetrieveUpdateDestroyView,
     AddressListCreateView, AddressRetrieveUpdateDestroyView,
     PhoneNumberListCreateView, PhoneNumberRetrieveUpdateDestroyView,
-    InterestListCreateView, InterestRetrieveUpdateDestroyView
+    InterestListCreateView, InterestRetrieveUpdateDestroyView,
+    PersonListView
 )
 
 urlpatterns = [
     path('persons/', PersonListCreateView.as_view(), name='person-list-create'),
+    path('persons-list/', PersonListView.as_view(), name='person-list-view'),
     path('persons/<int:pk>/', PersonRetrieveUpdateDestroyView.as_view(), name='person-retrieve-update-destroy'),
     path('addresses/', AddressListCreateView.as_view(), name='address-list-create'),
     path('addresses/<int:pk>/', AddressRetrieveUpdateDestroyView.as_view(), name='address-retrieve-update-destroy'),
