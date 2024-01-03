@@ -3,7 +3,6 @@ from django.db import models
 
 class Person(models.Model):
     name = models.CharField(max_length=255)
-    interests = models.ManyToManyField('Interest', related_name='persons')
     # other fields
     def __str__(self) -> str:
         return self.name
@@ -24,6 +23,7 @@ class PhoneNumber(models.Model):
         return self.number
 class Interest(models.Model):
     name = models.CharField(max_length=255)
+    persons = models.ManyToManyField(Person, related_name='persons')
     # other fields
     def __str__(self) -> str:
         return self.name

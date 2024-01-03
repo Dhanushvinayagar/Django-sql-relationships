@@ -5,17 +5,17 @@ from .views import (
     AddressListCreateView, AddressRetrieveUpdateDestroyView,
     PhoneNumberListCreateView, PhoneNumberRetrieveUpdateDestroyView,
     InterestListCreateView, InterestRetrieveUpdateDestroyView,
-    PersonListView
+    InterestListView
 )
 
 urlpatterns = [
     path('persons/', PersonListCreateView.as_view(), name='person-list-create'),
-    path('persons-list/', PersonListView.as_view(), name='person-list-view'),
     path('persons/<int:pk>/', PersonRetrieveUpdateDestroyView.as_view(), name='person-retrieve-update-destroy'),
     path('addresses/', AddressListCreateView.as_view(), name='address-list-create'),
     path('addresses/<int:pk>/', AddressRetrieveUpdateDestroyView.as_view(), name='address-retrieve-update-destroy'),
     path('phone-numbers/', PhoneNumberListCreateView.as_view(), name='phone-number-list-create'),
     path('phone-numbers/<int:pk>/', PhoneNumberRetrieveUpdateDestroyView.as_view(), name='phone-number-retrieve-update-destroy'),
     path('interests/', InterestListCreateView.as_view(), name='interest-list-create'),
+    path('interests-data/', InterestListView.as_view(), name='interest-list-view'),
     path('interests/<int:pk>/', InterestRetrieveUpdateDestroyView.as_view(), name='interest-retrieve-update-destroy'),
 ]

@@ -4,8 +4,6 @@ from .models import Person, Address, PhoneNumber, Interest
 
 
 class PersonSerializer(serializers.ModelSerializer):
-    interests = serializers.PrimaryKeyRelatedField(many=True, queryset=Interest.objects.all())
-
     class Meta:
         model = Person
         fields = '__all__'
@@ -20,15 +18,15 @@ class PhoneNumberSerializer(serializers.ModelSerializer):
         model = PhoneNumber
         fields = '__all__'
 
+
 class InterestSerializer(serializers.ModelSerializer):
+    persons = serializers.PrimaryKeyRelatedField(many=True, queryset=Person.objects.all())
     class Meta:
         model = Interest
         fields = '__all__'
 
-
-#   View only (get method only supported to view complete data from many to many)
-class PersonViewSerializer(serializers.ModelSerializer):
-    interests = InterestSerializer(many=True)
+class InterestViewSerializer(serializers.ModelSerializer):
+    persons = PersonSerializer(many=True)
     class Meta:
-        model = Person
+        model = Interest
         fields = '__all__'

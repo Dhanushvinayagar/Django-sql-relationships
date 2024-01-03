@@ -4,7 +4,7 @@ from .models import Person, Address, PhoneNumber, Interest
 from .serializers import (
     PersonSerializer, AddressSerializer,
     PhoneNumberSerializer, InterestSerializer,
-    PersonViewSerializer
+    InterestViewSerializer
 )
 
 class PersonListCreateView(generics.ListCreateAPIView):
@@ -39,6 +39,6 @@ class InterestRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Interest.objects.all()
     serializer_class = InterestSerializer
 
-class PersonListView(generics.ListAPIView):
-    queryset = Person.objects.all()
-    serializer_class = PersonViewSerializer
+class InterestListView(generics.ListCreateAPIView):
+    queryset = Interest.objects.all()
+    serializer_class = InterestViewSerializer
